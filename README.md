@@ -16,9 +16,23 @@ Starting the Graphical User Interface of biom3d depends on the type of installat
 
 Biom3d comes with 2 modes: local or remote. 'Local' means that the computation will be executed on your computer. 'Remote' means that the computations will be executed on a distant computer where the API of biom3d has been installed. The aspect of the GUI will slightly change depending on the chosen mode.
 
-If you have installed biom3d with the local version simply click on the 'Start locally' button to start.
+If you have installed biom3d with the local version simply click on the 'Start locally' button to start, you can choose a path to store your files in the field under the button, by default the files are stored in biom3d's directory.
 
-If you have installed biom3d with the remote version, you must then complete the required fields. The first one is the IP address of your remote computer (where the API of biom3d is installed). The second and third one is your user name and password to connect to the remote computer. (Please ignore the forth one, it is deprecated).
+If you have installed biom3d with the remote version, you must then complete the required fields. The first one is the IP address of your remote computer (where the API of biom3d is installed). The second and third one is your user name and password to connect to the remote computer, the forth one is the path to your virtual environment (if you don't have a virtual environment leave it empty ).
+
+
+## Preprocess & Train
+
+### Local
+
+Browse through your folders to locate your image folder and mask folder, where your images and masks are stored in TIFF or NIFTI format.
+
+
+Enter then the number of classes in your masks. The number of classes are the number of objects inside your images. For example, if you have annotated in your mask a pancreas with the label 1 and a tumor with label 2, you can entre '2' in this third field'.
+
+
+
+
 
 ## Preprocessing 
 
