@@ -1,10 +1,10 @@
 # The Graphical User Interface
 
-**[DEPRECATION NOTICE] The GUI is currently being updated! It will soon be back...**
+** The new GUI is finally here ! **
 
 Starting the Graphical User Interface of biom3d depends on the type of installation you followed:
 * If you installed biom3d with the directly link toward the executable file, you can simply double-click on the downloaded file.
-* If you installed biom3d with the API or the source code, you can start the GUI with `python -m biom3d.gui -L`.
+* If you installed biom3d with the API or the source code, you can start the GUI with `python -m biom3d.gui`.
 
 > Warning: the version of the GUI on GitHub is remote only, which means that you must also install the API on a server. If you would like to train your deep learning model locally and use the GUI, please install the API. 
 
@@ -18,7 +18,7 @@ Biom3d comes with 2 modes: local or remote. 'Local' means that the computation w
 
 If you have installed biom3d with the local version simply click on the 'Start locally' button to start, you can choose a path to store your files in the field under the button, by default the files are stored in biom3d's directory.
 
-If you have installed biom3d with the remote version, you must then complete the required fields. The first one is the IP address of your remote computer (where the API of biom3d is installed). The second and third one is your user name and password to connect to the remote computer, the forth one is the path to your virtual environment (if you don't have a virtual environment leave it empty ).
+If you have installed biom3d with the remote version, you must then complete the required fields. The first one is the IP address of your remote computer (where the API of biom3d is installed). The second and third one is your user name and password to connect to the remote computer, the forth one is the path to your virtual environment (if you don't have a virtual environment leave it empty).
 
 
 ## Preprocess & Train
@@ -29,12 +29,12 @@ If you have installed biom3d with the remote version, you must then complete the
 </p>
 
 
-The preprocessing is executed locally independently of the choice to start locally or remotely. The current images and masks format that are accepted by the GUI are TIFF files ('.tif' extension) and NIFTI ('.nii.gz' extension).
+The preprocessing is executed locally. The current images and masks format that are accepted by the GUI are TIFF files ('.tif' extension) and NIFTI ('.nii.gz' extension).
 
 > Note: The goals of the preprocessing are to standardize the input image and mask formats and to fasten the training process. During the preprocessing the images and masks will be converted to TIFF files ('.tif' extension). Each voxel intensity of the images will be Z-normalized (with a subtraction by the mean intensity and a division by the standard deviation of the intensities in one image). 
 
-You can either choose a dataset to preprocess and auto-configure or load a configuration file.
-
+:warning: You have **two options** ,you can either **choose a dataset to preprocess and auto-configure** or **load a configuration file**.
+#### OPTION 1 : 
 #### Dataset selection
 
 Browse through your folders to locate your image folder and mask folder, where your images and masks are stored in TIFF or NIFTI format.
@@ -51,7 +51,7 @@ Once the preprocessing data fields completed, configure the training hyper-param
 > Note: The default value of the number of epochs is 10 but 10 is quite small and should be increased if needed. 
 
 > Note: The rest of the hyper-parameters is automatically set depending on the median size of the 3D images of the dataset. 3D images are often too big to fit into memory when training a deep learning model, so their number and size must be regulated. The default values have be setup for a computer having a GPU of 12Go of VRAM. In the case where you have access to a larger GPU it could be interesting to increase the values of the training configuration. The batch size is a positive integer defining the number of images that will be used passed to the model simultaneously. A batch size of 2 is a good default to allow the model to see simultaneously several images and not too big to prevent any memory problem. The patch size is a triplet of positive integers defining the size of the crop applied to a 3D image. Each patch will be randomly rotated to give to the model different point of view. Unfortunately, the rotation creates black regions in the corner of the image. To avoid this artefact, the augmented patch size defines the size of a slightly bigger patch on which the rotation will be applied before the real patching. The number of pooling in the UNet is the number of time an image patch will be divided by 2. Hence, if one of the pooling dimension is set to 3 then the patch size will be divided by 8 and so the patch size should be dividable by 8! And this is true for all 3 dimensions.
-
+#### OPTION 2 : 
 #### Loading a configuration file
 <p align="center">
   <img src="_static/image/gui_local_preprocess&train_loadconfig.PNG" />
@@ -102,6 +102,8 @@ Second, select your model folder with the second "Browse" button. The model fold
 
 Third, select the output directory with the third "Browse" button.
 
+Fourth, choose prediction options : Keep the biggest object only or keep big objects only, or none.
+
 Finally, press the "Start" button to start your prediction.
 
 ### Remote (without Omero)
@@ -116,7 +118,9 @@ Second, select one of the model existing on the remote server with the drop-down
 
 Third, press the "Start" button to start the prediction. You can follow the prediction process in the terminal.
 
-Forth, once prediction are finished you can download them from the drop-down menu in the "Download predictions" frame and choosing a download location on your local computer with the "Browse button". Download then your results with the "Get data" button.
+Fourth,Fourth, choose prediction options : Keep the biggest object only or keep big objects only, or none.
+
+Fifth, once prediction are finished you can download them from the drop-down menu in the "Download predictions" frame and choosing a download location on your local computer with the "Browse button". Download then your results with the "Get data" button.
 
 ### Local (with Omero)
 
