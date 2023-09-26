@@ -1,6 +1,6 @@
 # The Graphical User Interface
 
-** The new GUI is finally here ! **
+**The new GUI is finally here !**
 
 Starting the Graphical User Interface of biom3d depends on the type of installation you followed:
 * If you installed biom3d with the directly link toward the executable file, you can simply double-click on the downloaded file.
@@ -118,7 +118,7 @@ Second, select one of the model existing on the remote server with the drop-down
 
 Third, press the "Start" button to start the prediction. You can follow the prediction process in the terminal.
 
-Fourth,Fourth, choose prediction options : Keep the biggest object only or keep big objects only, or none.
+Fourth, choose prediction options : **Keep the biggest object only** or **Keep big objects only**, or none.
 
 Fifth, once prediction are finished you can download them from the drop-down menu in the "Download predictions" frame and choosing a download location on your local computer with the "Browse button". Download then your results with the "Get data" button.
 
