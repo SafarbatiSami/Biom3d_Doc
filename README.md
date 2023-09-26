@@ -16,7 +16,7 @@ Starting the Graphical User Interface of biom3d depends on the type of installat
 
 Biom3d comes with 2 modes: local or remote. 'Local' means that the computation will be executed on your computer. 'Remote' means that the computations will be executed on a distant computer where the API of biom3d has been installed. The aspect of the GUI will slightly change depending on the chosen mode.
 
-If you have installed biom3d with the local version simply click on the 'Start locally' button to start, you can choose a path to store your files in the field under the button, by default the files are stored in biom3d's directory.
+If you have installed biom3d with the local version simply click on the 'Start locally' button to start, you can choose a path to store your files in the field over the button, by default, the files are stored in the directory where biom3d have been launched.
 
 If you have installed biom3d with the remote version, you must then complete the required fields. The first one is the IP address of your remote computer (where the API of biom3d is installed). The second and third one is your user name and password to connect to the remote computer, the forth one is the path to your virtual environment (if you don't have a virtual environment leave it empty).
 
@@ -33,7 +33,7 @@ The preprocessing is executed locally. The current images and masks format that 
 
 > Note: The goals of the preprocessing are to standardize the input image and mask formats and to fasten the training process. During the preprocessing the images and masks will be converted to TIFF files ('.tif' extension). Each voxel intensity of the images will be Z-normalized (with a subtraction by the mean intensity and a division by the standard deviation of the intensities in one image). 
 
-:warning: You have **two options** ,you can either **choose a dataset to preprocess and auto-configure** or **load a configuration file**.
+:warning: You have **two options** ,you can either **choose a dataset to preprocess and auto-configure** or if you already preprocessed a dataset **load a configuration file**.
 #### OPTION 1 : 
 #### Dataset selection
 
@@ -86,7 +86,7 @@ Once the training starts you can display the learning curves by clicking on 'Plo
 
 ## Predict
 
-Once your model is trained congratulation you are ready for production! You can now use your model on new raw data with the "Predict" tab. Prediction can also be done from Omero dataset. Some details are provided in the third and forth subsections below. 
+Once your model is trained congratulation you are ready for production! You can now use your model on new raw data with the "Predict" tab. Prediction can also be done from Omero dataset and the results can be stored in Omero. Some details are provided in the third and forth subsections below. 
 
 The general idea behind prediction is: 1. choose a new unannotated dataset 2. choose a trained model 3. start the prediction.
 
@@ -100,7 +100,7 @@ First, select your image data folder with the first "Browse" button.
 
 Second, select your model folder with the second "Browse" button. The model folder is named "date-time-model_name" (for example "20221005-122923-hrnet_pancreas") and should contain 3 sub-folders ("image","log","model").
 
-Third, select the output directory with the third "Browse" button.
+Third, select the output directory with the third "Browse" button or click on 'Send predictions to omero' button to store the prediction on Omero (more details in the last section).
 
 Fourth, choose prediction options : Keep the biggest object only or keep big objects only, or none.
 
@@ -116,9 +116,9 @@ First, select your image directory from the drop-down menu or send a new image d
 
 Second, select one of the model existing on the remote server with the drop-down menu in the "Model selection" frame.
 
-Third, press the "Start" button to start the prediction. You can follow the prediction process in the terminal.
+Third, choose prediction options : **Keep the biggest object only** or **Keep big objects only**, or none.
 
-Fourth, choose prediction options : **Keep the biggest object only** or **Keep big objects only**, or none.
+Fourth, press the "Start" button to start the prediction. You can follow the prediction process in the terminal.
 
 Fifth, once prediction are finished you can download them from the drop-down menu in the "Download predictions" frame and choosing a download location on your local computer with the "Browse button". Download then your results with the "Get data" button.
 
@@ -128,7 +128,7 @@ Fifth, once prediction are finished you can download them from the drop-down men
   <img src="_static/image/gui_local_predict_omero.PNG" />
 </p>
 
-When clicking on the "Use omero" tick box, two new frames should appear and replace the previous "Input directory" frame. In the first frame called "Connection to Omero", set your Omero server, user name and password. In the second frame called "Selection of Omero dataset", choose if you would like to run the prediction over an Omero Dataset (a folder containing images) only or over a complete Omero Project (a folder containing folders of images). In the same frame, then set the identifier (ID) of your dataset. 
+When clicking on the "Use omero" tick box, two new frames should appear and replace the previous "Input directory" frame. In the first frame called "Connection to Omero", set your Omero server, user name and password. In the second frame called "Selection of Omero dataset", you can run the prediction over an Omero Dataset (a folder containing images). In the same frame, then set the identifier (ID) of your dataset. 
 
 <p align="center">
   <img src="_static/image/omero_dataset_id.PNG" />
@@ -143,3 +143,11 @@ The next frames are similar to the one without Omero, please follow the steps st
 </p>
 
 Please follow the first step of the "Local (with Omero)" sub-section and then the steps of the "Remote (without Omero)" sub-section starting from the second step to get all the details.
+
+### Send predictions to Omero
+
+<p align="center">
+  <img src="_static/image/gui_send_prediction_to_omero.PNG" />
+</p>
+
+When clicking on the "Send predictions to omero" tick box, a new frame should appear and replace the previous "Output directory" frame. The frame is called "Connection to Omero", to set your Omero server, user name and password. In the same frame, you have to choose the output Project ID (where a new dataset will be created) then set a name to that dataset. Finally, in the drop-down menu choose the dataset to send and click on 'Send to Omero' button.
