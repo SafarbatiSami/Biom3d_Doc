@@ -151,4 +151,5 @@ Please follow the first step of the "Local (with Omero)" sub-section and then th
 </p>
 
 When clicking on the "Send predictions to omero" tick box, a new frame should appear and replace the previous "Output directory" frame. The frame is called "Connection to Omero server", to set your Omero server, user name and password. In the same frame, you have to choose the output Project ID (where a new dataset will be created) then set a name to that dataset. 
+
 Finally, for Remote Gui in the drop-down menu choose the dataset to send and click on 'Send to Omero' button, for Local Gui click on 'Browse' and select the dataset to send.
